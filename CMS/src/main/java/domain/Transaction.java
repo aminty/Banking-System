@@ -1,4 +1,6 @@
 package domain;
 
-public class Transaction {
+import base.domain.BaseEntity;
+
+public class Transaction extends BaseEntity<Long> {
 }

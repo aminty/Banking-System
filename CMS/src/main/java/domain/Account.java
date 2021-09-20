@@ -1,4 +1,6 @@
 package domain;
 
-public class Account {
+import base.domain.BaseEntity;
+
+public class Account extends BaseEntity<Long> {
 }

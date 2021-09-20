@@ -1,4 +1,6 @@
 package domain;
 
-public class CreaditCard {
+import base.domain.BaseEntity;
+
+public class CreaditCard extends BaseEntity<Long> {
 }
