@@ -36,6 +36,8 @@ public class Menu {
 
     public static final String DELETE="❌";
 
+    public static final String PROHIBITED="\uD83D\uDEAB";
+
     public static final String COMMENT="\uD83D\uDCAC";
 
     public static final String USER="\uD83D\uDC64";

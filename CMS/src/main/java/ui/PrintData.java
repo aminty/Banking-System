@@ -26,4 +26,7 @@ public class PrintData {
     public static void errorMessage(String title) {
         System.out.println("\t"+" >>>  "+ Menu.DELETE+" "+title );
     }
+    public static void successMessage(String title) {
+        System.out.println("\t"+" >>>  "+ Menu.CHECKMARK+" "+title );
+    }
 }

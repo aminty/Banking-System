@@ -22,6 +22,7 @@ public class RunApp {
                         break;
 
                     case 2:
+                        signup();
                         break;
 
                     case 3:
@@ -38,10 +39,16 @@ public class RunApp {
 
     }
 
+    private static void signup() {
+        ApplicationContext.getCustomerService().signup();
+
+    }
+
     private static void login() {
         outer:
         {
             while (true) {
+                System.out.println("-*-*-*-*-*-* login -*-*-*-*-*-*");
                 int selectedItem;
                 PrintData.printMenu(Menu.LOGINAS);
                 PrintData.printMessage("Login as : ");

@@ -36,4 +36,11 @@ public class CustomerRepositoryImpl extends BaseEntityRepositoryImpl<Customer,Lo
                 "select count(username) from "+ getEntityClass().getSimpleName()+" where username =:username",
                 Long.class).setParameter("username",username).getSingleResult()==1L;
     }
+
+    @Override
+    public boolean isExistsByNationalCode(String nationalCode) {
+        return entityManager.createQuery(
+                "select count(nationalCode) from "+ getEntityClass().getSimpleName()+" where nationalCode =:nationalCode",
+                Long.class).setParameter("nationalCode",nationalCode).getSingleResult()==1L;
+    }
 }
