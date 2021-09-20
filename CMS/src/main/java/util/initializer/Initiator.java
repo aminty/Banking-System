@@ -10,14 +10,14 @@ import util.ApplicationContext;
 
 public class Initiator {
 
-    public void init() {
+    public static void init() {
         AccountService accountService = ApplicationContext.getAccountService();
         BankService bankService = ApplicationContext.getBankService();
         CustomerService customerService = ApplicationContext.getCustomerService();
         EmployeeService employeeService = ApplicationContext.getEmployeeService();
         TransactionService transactionService = ApplicationContext.getTransactionService();
 
-        /* INIT */
+        /* INIT
         User user = new User();
         user.setFirstName("amin");
         user.setLastName("tavakkoli");
@@ -36,7 +36,7 @@ public class Initiator {
         employee.setWorkPlace(mellat);
         ApplicationContext.getEmployeeService().save(employee);
         mellat.setChief(employee);
-        ApplicationContext.getBankService().save(mellat);
+        ApplicationContext.getBankService().save(mellat);*/
 
     }
 }
