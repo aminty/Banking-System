@@ -1,14 +1,14 @@
 package base.service.impl;
 
 import base.domain.BaseEntity;
-import base.repository.BaseRepository;
+import base.repository.BaseEntityRepository;
 import base.service.BaseEntityService;
 
 import java.io.Serializable;
 import java.util.List;
 
 public  abstract class BaseEntityServiceImpl<E extends BaseEntity<ID>,
-        ID extends Serializable, R extends BaseRepository<E,ID>>
+        ID extends Serializable, R extends BaseEntityRepository<E,ID>>
         implements BaseEntityService<E,ID> {
 
     protected final R repository;

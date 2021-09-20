@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public interface BaseRepository<E extends BaseEntity<ID>, ID extends Serializable> {
+public interface BaseEntityRepository<E extends BaseEntity<ID>, ID extends Serializable> {
 
     E save(E e);
 

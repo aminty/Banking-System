@@ -1,20 +1,19 @@
 package base.repository.impl;
 
 import base.domain.BaseEntity;
-import base.repository.BaseRepository;
+import base.repository.BaseEntityRepository;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
-public  abstract class BaseRepositoryImpl <E extends BaseEntity<ID>, ID extends Serializable>
-        implements BaseRepository<E,ID> {
+public  abstract class BaseEntityRepositoryImpl<E extends BaseEntity<ID>, ID extends Serializable>
+        implements BaseEntityRepository<E,ID> {
  protected final EntityManager entityManager;
-    public BaseRepositoryImpl(EntityManager entityManager) {
+    public BaseEntityRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-    abstract Class<E> getEntityClass();
+     public abstract Class<E> getEntityClass();
 
     @Override
     public E save(E e) {
