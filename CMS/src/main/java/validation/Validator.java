@@ -12,7 +12,7 @@ public class Validator {
             entry= new Scanner(System.in).next();
             Matcher m= Pattern.compile(pattern).matcher(entry);
             if (m.matches())
-                return Integer.valueOf(entry);
+                return Integer.parseInt(entry);
 
         }
 

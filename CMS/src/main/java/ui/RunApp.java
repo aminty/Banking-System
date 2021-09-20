@@ -1,6 +1,8 @@
 package ui;
 
+import util.ApplicationContext;
 import validation.Validator;
+
 
 public class RunApp {
 
@@ -15,6 +17,8 @@ public class RunApp {
                 PrintData.printMessage("Select item : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
+                       if( ApplicationContext.getEmployeeService().login())
+                           login();
                         break;
 
                     case 2:
@@ -23,7 +27,7 @@ public class RunApp {
                     case 3:
                         break outer;
                     default:
-                        PrintData.printMessage("Item does not exists !");
+                        PrintData.errorMessage("Item does not exists !");
 
                 }
 
@@ -32,6 +36,9 @@ public class RunApp {
         }
 
 
+    }
+
+    private static void login() {
     }
 
 

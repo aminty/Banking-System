@@ -1,19 +1,21 @@
 package util;
 
 import domain.Account;
+import domain.User;
 
 public class CurrentData {
-     public  static Account currentAccount;
+     public  static User currentUser;
 
 
     public static void logout() {
-        currentAccount = null;
-    }
-    public static Account getCurrentAccount() {
-        return currentAccount;
+        currentUser = null;
     }
 
-    public static void setCurrentAccount(Account currentAccount) {
-        CurrentData.currentAccount = currentAccount;
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        CurrentData.currentUser = currentUser;
     }
 }

@@ -20,8 +20,10 @@ public class PrintData {
         Stream.of(items).forEach(System.out::println);
 
     }
-
     public static void printMessage(String title) {
-        System.out.print("--> " + title +"\n");
+        System.out.print("->> " + title );
+    }
+    public static void errorMessage(String title) {
+        System.out.println(Menu.NEXTLINE+"   "+ Menu.DELETE+" "+title );
     }
 }

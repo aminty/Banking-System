@@ -17,26 +17,26 @@ public class Initiator {
         EmployeeService employeeService = ApplicationContext.getEmployeeService();
         TransactionService transactionService = ApplicationContext.getTransactionService();
 
-        /* INIT
-        User user = new User();
-        user.setFirstName("amin");
-        user.setLastName("tavakkoli");
-        user.setNationalCode("0020411741");
-        user.setGender(Gender.MALE);
-        Employee employee = new Employee();
-        Bank mellat = new Bank();
-        employee.setJobTitle(Job.CHIEF);
-        employee.setUser(user);
-        employee.setUsername("aminty");
-        employee.setPassword("1234");
-        employee.setChief(employee);
-        employee.setIsChief(true);
-        mellat.setBName("Mellat");
-        ApplicationContext.getBankService().save(mellat);
-        employee.setWorkPlace(mellat);
-        ApplicationContext.getEmployeeService().save(employee);
-        mellat.setChief(employee);
-        ApplicationContext.getBankService().save(mellat);*/
+        /* INIT*/
+//        User user = new User();
+//        user.setFirstName("amin");
+//        user.setLastName("tavakkoli");
+//        user.setNationalCode("0020411741");
+//        user.setGender(Gender.MALE);
+//        user.setUsername("aminty");
+//        user.setPassword("1234");
+//        Employee employee = new Employee();
+//        Bank mellat = new Bank();
+//        employee.setJobTitle(Job.CHIEF);
+//        employee.setUser(user);
+//        employee.setChief(employee);
+//        employee.setIsChief(true);
+//        mellat.setBName("Mellat");
+//        ApplicationContext.getBankService().save(mellat);
+//        employee.setWorkPlace(mellat);
+//        ApplicationContext.getEmployeeService().save(employee);
+//        mellat.setChief(employee);
+//        ApplicationContext.getBankService().save(mellat);
 
     }
 }

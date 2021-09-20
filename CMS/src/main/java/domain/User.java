@@ -27,5 +27,9 @@ public class User {
 
     private String nationalCode;
 
+    private String username;
+
+    private String password;
+
 
 }

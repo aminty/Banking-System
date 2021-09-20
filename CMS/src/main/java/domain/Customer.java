@@ -21,9 +21,6 @@ public class Customer extends BaseEntity<Long> {
     @Embedded
     private User user;
 
-    private String userName;
-
-    private String password;
 
 
 }

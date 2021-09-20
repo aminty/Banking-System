@@ -20,13 +20,28 @@ public class Menu {
 
     public static String ACCOUNT_IS_INACTIVE_MSG = "Dear %s ,your account isn't active yet !\nchange pin to active :)";
 
-    public static String ACCOUNT_IS_ACTIVE_MSG = "Thank you.\nyour account has been activated";
+    public static String ACCOUNT_IS_ACTIVE_MSG = "Thank you.\nyour account has been activated\n";
 
-    public static String ACCOUNT_CREATE_MSG = "Your account has been created!";
+    public static String ACCOUNT_CREATE_MSG = "Your account has been created!\n";
 
-    public static String TRANSACTION_DONE__MSG = "Transaction has done successfuly";
+    public static String TRANSACTION_DONE__MSG = "Transaction has done successfuly\n";
+
+    public static String LOGIN_SUCCESS__MSG = "You logged in successfuly\n";
 
 
+    public static final String CHECKMARK="✅";
+
+    public static final String DELETE="❌";
+
+    public static final String COMMENT="\uD83D\uDCAC";
+
+    public static final String USER="\uD83D\uDC64";
+
+    public static final String NEXTLINE="↪";
+
+    public static final String ID="\uD83C\uDD94";
+
+    public static final String DATE="\uD83D\uDCC5";
 
 
 }

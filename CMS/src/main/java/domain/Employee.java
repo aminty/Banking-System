@@ -19,9 +19,7 @@ public class Employee extends BaseEntity<Long> {
     @Embedded
     private User user;
 
-    private String username;
 
-    private String password;
 
 
     private boolean isChief;

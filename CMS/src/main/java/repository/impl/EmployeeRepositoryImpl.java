@@ -19,4 +19,18 @@ public class EmployeeRepositoryImpl extends BaseEntityRepositoryImpl<Employee,Lo
     public Class<Employee> getEntityClass() {
         return Employee.class;
     }
+
+    @Override
+    public Employee fingByUsername(String username) {
+        return entityManager.createQuery(
+                "from "+getEntityClass().getSimpleName()+ " where username=:username",getEntityClass())
+                .setParameter("username",username).getSingleResult();
+    }
+
+    @Override
+    public boolean isExistsByUsername(String username) {
+        return entityManager.createQuery(
+                "select count(username) from "+ getEntityClass().getSimpleName()+" where username =:username",
+                Long.class).setParameter("username",username).getSingleResult()==1L;
+    }
 }
