@@ -5,11 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ui.enumeration.Job;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -25,14 +23,26 @@ public class Employee extends BaseEntity<Long> {
 
     private String password;
 
+
     private boolean isChief;
 
     @ManyToOne
     private Employee chief;
 
-    private String jobTitle;
+    @Enumerated(EnumType.STRING)
+    private Job jobTitle;
+
+
     @ManyToOne
     private Bank workPlace;
 
+
+    public boolean getIsChief() {
+        return isChief;
+    }
+
+    public void setIsChief(boolean chief) {
+        isChief = chief;
+    }
 
 }

@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ui.enumeration.TransactionType;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -19,8 +18,8 @@ import java.util.Date;
 @Table(name ="transaction")
 
 public class Transaction extends BaseEntity<Long> {
-
-    private String transactionType;
+    @Enumerated(EnumType.STRING)
+    private TransactionType transactionType;
 
     private Date transactionDate;
 

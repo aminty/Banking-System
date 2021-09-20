@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ui.enumeration.Gender;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -20,8 +19,8 @@ public class User {
     private String firstName;
 
     private String lastName;
-
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Temporal(TemporalType.DATE)
     private Date birthDate;
