@@ -2,6 +2,7 @@ package base.repository;
 
 import base.domain.BaseEntity;
 
+import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,7 @@ public interface BaseRepository<E extends BaseEntity<ID>, ID extends Serializabl
 
     boolean existsById(ID id);
 
+    EntityManager getEntityManager();
 
 
 

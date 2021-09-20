@@ -56,4 +56,9 @@ public  abstract class BaseRepositoryImpl <E extends BaseEntity<ID>, ID extends 
         return entityManager.find(getEntityClass(),id);
 
     }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }
