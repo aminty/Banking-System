@@ -3,6 +3,7 @@ package repository.impl;
 import base.repository.impl.BaseEntityRepositoryImpl;
 import domain.Bank;
 import domain.Customer;
+import domain.Employee;
 import repository.BankRepository;
 import repository.CustomerRepository;
 
@@ -20,5 +21,19 @@ public class CustomerRepositoryImpl extends BaseEntityRepositoryImpl<Customer,Lo
     @Override
     public Class<Customer> getEntityClass() {
         return Customer.class;
+    }
+
+    @Override
+    public Customer fingByUsername(String username) {
+        return entityManager.createQuery(
+                "from "+getEntityClass().getSimpleName()+ " where username=:username",getEntityClass())
+                .setParameter("username",username).getSingleResult();
+    }
+
+    @Override
+    public boolean isExistsByUsername(String username) {
+        return entityManager.createQuery(
+                "select count(username) from "+ getEntityClass().getSimpleName()+" where username =:username",
+                Long.class).setParameter("username",username).getSingleResult()==1L;
     }
 }

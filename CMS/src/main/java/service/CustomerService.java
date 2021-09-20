@@ -5,4 +5,5 @@ import domain.Account;
 import domain.Customer;
 
 public interface CustomerService extends BaseEntityService<Customer,Long> {
+    boolean login();
 }

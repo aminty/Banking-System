@@ -24,6 +24,6 @@ public class PrintData {
         System.out.print("->> " + title );
     }
     public static void errorMessage(String title) {
-        System.out.println(Menu.NEXTLINE+"   "+ Menu.DELETE+" "+title );
+        System.out.println("\t"+" >>>  "+ Menu.DELETE+" "+title );
     }
 }

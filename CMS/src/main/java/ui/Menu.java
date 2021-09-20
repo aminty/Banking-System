@@ -6,6 +6,9 @@ public class Menu {
     public static String[] STARTMENU =
             {"[1] - Login", "[2] - Sign up", "[3] - Exit"};
 
+    public static String[] LOGINAS =
+            {"[1] - Employee", "[2] - Customer", "[3] - Exit"};
+
     public static String[] WHENCUSTOMERLOGIN =
             {"[1] - Send money", "[2] - Inquiry balance", "[3] - Show transactions", "[4] - Change pin", "[5] - Exit"};
 
