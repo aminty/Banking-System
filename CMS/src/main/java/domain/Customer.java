@@ -13,21 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Customer")
-
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer extends User {
 
 
-    @Column(name = "customer_id", unique = true, nullable = false)
-    private Long customerId;
 
 
-    @OneToMany
-    @Column(name = "account_id")
-    private List<Account> accountIds = new ArrayList<>();
+    private String userName;
+
+    private String password;
+
 
 
 
