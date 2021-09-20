@@ -7,7 +7,7 @@ import service.CustomerService;
 
 public class CustomerServiceImpl extends BaseEntityServiceImpl<Customer,Long, CustomerRepository>
         implements CustomerService {
-    protected CustomerServiceImpl(CustomerRepository repository) {
+    public CustomerServiceImpl(CustomerRepository repository) {
         super(repository);
     }
 }

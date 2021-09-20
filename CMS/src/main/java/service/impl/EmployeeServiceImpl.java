@@ -7,7 +7,7 @@ import service.EmployeeService;
 
 public class EmployeeServiceImpl extends BaseEntityServiceImpl<Employee,Long, EmployeeRepository>
         implements EmployeeService {
-    protected EmployeeServiceImpl(EmployeeRepository repository) {
+    public EmployeeServiceImpl(EmployeeRepository repository) {
         super(repository);
     }
 }

@@ -7,7 +7,7 @@ import service.BankService;
 
 public class BankServiceImpl extends BaseEntityServiceImpl<Bank,Long, BankRepository>
         implements BankService {
-    protected BankServiceImpl(BankRepository repository) {
+    public BankServiceImpl(BankRepository repository) {
         super(repository);
     }
 }

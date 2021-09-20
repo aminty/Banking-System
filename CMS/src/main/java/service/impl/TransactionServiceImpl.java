@@ -7,7 +7,7 @@ import service.TransactionService;
 
 public class TransactionServiceImpl extends BaseEntityServiceImpl<Transaction,Long, TransactionRepository>
         implements TransactionService {
-    protected TransactionServiceImpl(TransactionRepository repository) {
+    public TransactionServiceImpl(TransactionRepository repository) {
         super(repository);
     }
 }

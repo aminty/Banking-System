@@ -5,9 +5,9 @@ import domain.Account;
 import repository.AccountRepository;
 import service.AccountService;
 
-public class AccountServiceImpl extends BaseEntityServiceImpl<Account,Long, AccountRepository>
-implements AccountService {
-    protected AccountServiceImpl(AccountRepository repository) {
+public class AccountServiceImpl extends BaseEntityServiceImpl<Account, Long, AccountRepository>
+        implements AccountService {
+    public AccountServiceImpl(AccountRepository repository) {
         super(repository);
     }
 }
