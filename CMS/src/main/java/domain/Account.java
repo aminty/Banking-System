@@ -15,19 +15,21 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="account")
 public class Account extends BaseEntity<Long> {
 
     @ManyToOne
-    private Customer customerId;
+    private Customer customer;
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Bank branchName;
+    private Bank branch;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private CreaditCard creaditCardId;
+    private CreaditCard creaditCard;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="trans_per_acc")
     private List<Transaction> transactions = new ArrayList<>();
 
     private double balance;

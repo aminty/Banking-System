@@ -16,6 +16,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="bank")
+
 public class Bank extends BaseEntity<Long> {
 
     private String bName;
@@ -23,13 +25,15 @@ public class Bank extends BaseEntity<Long> {
     @OneToOne
     private Employee chief;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Employee> employeeIds =new HashSet<>();
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "workPlace")
+//    private Set<Employee> employeeIds =new HashSet<>();
+//
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "bank")
+//    @JoinTable("trans_per_acc")
+//    private Set<Customer> customerIds =new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Customer> customerIds =new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Account> accountIds=new HashSet<>();
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name ="trans_per_acc")
+//    private Set<Account> accountIds=new HashSet<>();
 
 }

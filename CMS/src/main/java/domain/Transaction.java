@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
@@ -15,6 +16,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="transaction")
 
 public class Transaction extends BaseEntity<Long> {
 

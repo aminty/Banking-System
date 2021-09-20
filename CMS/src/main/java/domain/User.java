@@ -1,15 +1,21 @@
 package domain;
 
-import base.domain.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Date;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends BaseEntity<Long> {
+@Embeddable
+public class User {
 
     private String firstName;
 
@@ -17,7 +23,8 @@ public class User extends BaseEntity<Long> {
 
     private String gender;
 
-    private String birthDate;
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
     private String nationalCode;
 
