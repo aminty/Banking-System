@@ -36,7 +36,6 @@ public class User extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     private Job jobTitle;
 
-    private boolean isChief;
 
 
 }

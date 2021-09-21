@@ -1,7 +1,12 @@
 package service.impl;
 
 import base.service.impl.BaseEntityServiceImpl;
+import com.github.javafaker.Faker;
+import com.github.javafaker.*;
+import com.github.javafaker.service.RandomService;
+import domain.Account;
 import domain.Bank;
+import domain.CreaditCard;
 import domain.User;
 import repository.UserRepository;
 import service.UserService;
@@ -10,6 +15,7 @@ import ui.Menu;
 import ui.PrintData;
 import ui.enumeration.Job;
 import util.ApplicationContext;
+import util.CurrentData;
 import validation.Validator;
 
 import java.util.List;
@@ -21,23 +27,30 @@ public class UserServiceImpl extends BaseEntityServiceImpl<User, Long, UserRepos
     public UserServiceImpl(UserRepository repository) {
         super(repository);
     }
-//        @Override
-//        public boolean login() {
-//            System.out.printf("\t %s enter username: ", Menu.NEXTLINE);
-//            String username = new Scanner(System.in).next();
-//            System.out.printf("\t %s enter password: ", Menu.NEXTLINE);
-//            String password = new Scanner(System.in).next();
-//            if (repository.isExistsByUsername(username)) {
-//                User user = repository.fingByUsername(username);
-//                if (user.getPassword().equals(password))
-//                    CurrentData.setCurrentUser(user);
-//                PrintData.printMessage(Menu.LOGIN_SUCCESS__MSG);
-//                return true;
-//            } else {
-//                PrintData.errorMessage("This user does not exists!");
-//                return false;
-//            }
-    //      }
+    @Override
+    public boolean login(Job jobTitle) {
+        System.out.printf("\t %s enter username: ", Menu.NEXTLINE);
+        String username = new Scanner(System.in).next();
+        System.out.printf("\t %s enter password: ", Menu.NEXTLINE);
+        String password = new Scanner(System.in).next();
+        if (repository.isExistsByUsername(username)) {
+            User user = repository.fingByUsername(username);
+            if (user.getJobTitle().equals(Job.CUSTOMER) && jobTitle.equals(Job.EMPLOYEE)){
+                PrintData.errorMessage("Access denied!");
+                return false;
+
+            }
+            if (user.getPassword().equals(password)) {
+                CurrentData.setCurrentUser(user);
+                CurrentData.setCurrentAccount(ApplicationContext.getAccountService().findByUser(user.getId()));
+            }
+            PrintData.printMessage(Menu.LOGIN_SUCCESS__MSG);
+            return true;
+        } else {
+            PrintData.errorMessage("This user does not exists!");
+            return false;
+        }
+    }
 
     @Override
     public void signup(Job jobTitle) {
@@ -47,35 +60,48 @@ public class UserServiceImpl extends BaseEntityServiceImpl<User, Long, UserRepos
             return;
         }
         User user;
-        Bank bank ;
-        user=GetDataFromUser.getDataForSignUp(jobTitle);
+        Bank bank;
+        Faker faker=new Faker();
+        Account account=new Account();
+        CreaditCard creaditCard=new CreaditCard();
+        user = GetDataFromUser.getDataForSignUp(jobTitle);
         List<Bank> banksList = ApplicationContext.getBankService().showBanks();
         banksList.forEach(b -> System.out.printf("[%d] - %s\n", b.getId(), b.getBName()));
-        outer:{
+        outer:
+        {
             while (true) {
                 System.out.printf("\t %s chosse bank: ", Menu.NEXTLINE);
                 int selectedItem = Validator.checkInteger("\\d");
                 for (Bank item : banksList) {
-                    if (item.getId() == selectedItem)
-                        break;
+                    if (item.getId() == selectedItem) {
+                        bank = ApplicationContext.getBankService().findById((long) selectedItem);
+                        break outer;
+                    }
                 }
-                bank=ApplicationContext.getBankService().findById((long) selectedItem);
-                break;
             }
         }
-        user.setJobTitle(jobTitle);
-        save(user);
-        if (bank.getChief()==null)
-            if (Job.EMPLOYEE.equals(jobTitle))
+        if (bank.getChief() == null) {
+            if (Job.EMPLOYEE.equals(jobTitle)) {
                 bank.setChief(user);
-            else {
-                PrintData.errorMessage("This bank has no cheif yet!");
-                return;
-            }
-        Set<User> bankUsers=bank.getBankUsers();
+                save(user); }
+            if (Job.CUSTOMER.equals(jobTitle)) {
+                PrintData.errorMessage("This bank has no chief yet!");
+                return; }
+
+        } else {
+            save(user);
+        }
+        Set<User> bankUsers = bank.getBankUsers();
         bankUsers.add(user);
         bank.setBankUsers(bankUsers);
         ApplicationContext.getBankService().save(bank);
+        account.setCreaditCard(ApplicationContext.getCreaditCardService().generateCard());
+        account.setOwnerAccount(user);
+        account.setActive(true);
+        account.setBalance(50000);
+        account.setBranch(bank);
+        ApplicationContext.getAccountService().save(account);
+
         PrintData.successMessage(Menu.ACCOUNT_CREATE_MSG);
     }
 

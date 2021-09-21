@@ -19,13 +19,13 @@ import javax.persistence.Table;
 public class CreaditCard extends BaseEntity<Long> {
 
 
-    private Long cardNumber;
+    private String cardNumber;
 
-    private int cvv2;
+    private String cvv2;
 
     private String expDate;
 
-    private int pinCode;
+    private String pinCode;
 
     private boolean isBlockCard;
 

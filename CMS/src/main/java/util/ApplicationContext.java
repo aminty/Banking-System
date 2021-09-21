@@ -10,22 +10,23 @@ import javax.persistence.EntityManager;
 public class ApplicationContext {
     private static final AccountService accountService;
     private static final BankService bankService;
-
     private static final TransactionService TransactionService;
     private static final UserService userService;
+    private static final CreaditCardService creaditCardService;
 
 
+    private static final CreaditCardRepository creaditCardRepository;
     private static final AccountRepository accountRepository;
     private static final BankRepository bankRepository;
-
     private static final TransactionRepository transactionRepository;
     private static final UserRepository userRepository;
 
 
     static {
         EntityManager entityManager = HibernateUtil.getEntityMangerFactory().createEntityManager();
-        accountRepository = new AccountRepositoryimpl(entityManager);
+        accountRepository = new AccountRepositoryImpl(entityManager);
         bankRepository = new BankRepositoryImpl(entityManager);
+        creaditCardRepository = new CreaditCardRepositoryImpl(entityManager);
 
         transactionRepository = new TransactionRepositoryImpl(entityManager);
         userRepository = new UserRepositoryImpl(entityManager);
@@ -35,6 +36,8 @@ public class ApplicationContext {
 
         TransactionService = new TransactionServiceImpl(transactionRepository);
         userService = new UserServiceImpl(userRepository);
+
+        creaditCardService = new CreaditCardSeviceImpl(creaditCardRepository);
 
     }
 
@@ -47,12 +50,15 @@ public class ApplicationContext {
     }
 
 
-
     public static TransactionService getTransactionService() {
         return TransactionService;
     }
 
     public static UserService getUserService() {
         return userService;
+    }
+
+    public static CreaditCardService getCreaditCardService() {
+        return creaditCardService;
     }
 }

@@ -2,6 +2,7 @@ package ui;
 
 import ui.enumeration.Job;
 import util.ApplicationContext;
+import util.CurrentData;
 import validation.Validator;
 
 
@@ -81,11 +82,13 @@ public class RunApp {
                 PrintData.printMessage("Login as : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
-                        loginAsEmployee();
+                        if (ApplicationContext.getUserService().login(Job.EMPLOYEE))
+                            loginAsEmployee();
                         break;
 
                     case 2:
-                        loginAsCustomer();
+                        if (ApplicationContext.getUserService().login(Job.CUSTOMER))
+                            loginAsCustomer();
                         break;
 
                     case 3:
@@ -121,6 +124,7 @@ public class RunApp {
                         break;
 
                     case 5:
+                        CurrentData.logout();
                         break outer;
                     default:
                         PrintData.errorMessage("Item does not exists !");
@@ -136,7 +140,7 @@ public class RunApp {
         {
             while (true) {
                 int selectedItem;
-                PrintData.printMenu(Menu.WHENEMPLOYEELOGIN);
+                PrintData.printDashboard(Menu.WHENEMPLOYEELOGIN);
                 PrintData.printMessage("Select item : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
@@ -155,6 +159,7 @@ public class RunApp {
                         break;
 
                     case 5:
+                        CurrentData.logout();
                         break outer;
                     default:
                         PrintData.errorMessage("Item does not exists !");

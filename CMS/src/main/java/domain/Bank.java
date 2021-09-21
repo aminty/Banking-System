@@ -29,6 +29,7 @@ public class Bank extends BaseEntity<Long> {
     private Set<User> bankUsers =new HashSet<>();
 
 
+
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Account> accountIds=new HashSet<>();
 

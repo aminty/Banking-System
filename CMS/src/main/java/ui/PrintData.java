@@ -13,7 +13,7 @@ public class PrintData {
     }
     public static void printDashboard(String[] items) {
         System.out.println("|-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|");
-        System.out.printf("|Name: %S   -   Branch: %S   -    Customer id: %d \n",
+        System.out.printf("|Name: %S   -   Branch: %S   -    Customer id: %d   \n",
                 CurrentData.getCurrentAccount().getOwnerAccount().getFirstName() + " " +
                         CurrentData.getCurrentAccount().getOwnerAccount().getLastName(), CurrentData.getCurrentAccount().getBranch().getBName(),
                 CurrentData.getCurrentAccount().getId());
