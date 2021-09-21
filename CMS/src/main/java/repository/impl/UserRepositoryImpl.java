@@ -1,30 +1,25 @@
 package repository.impl;
 
 import base.repository.impl.BaseEntityRepositoryImpl;
-import domain.Bank;
-import domain.Customer;
-import domain.Employee;
-import repository.BankRepository;
-import repository.CustomerRepository;
+import domain.User;
+import repository.UserRepository;
 
 import javax.persistence.EntityManager;
 
-public class CustomerRepositoryImpl extends BaseEntityRepositoryImpl<Customer,Long> implements
-        CustomerRepository {
-
-
-
-    public CustomerRepositoryImpl(EntityManager entityManager) {
+public class UserRepositoryImpl extends BaseEntityRepositoryImpl<User, Long> implements UserRepository {
+    public UserRepositoryImpl(EntityManager entityManager) {
         super(entityManager);
     }
 
     @Override
-    public Class<Customer> getEntityClass() {
-        return Customer.class;
+    public Class<User> getEntityClass() {
+        return User.class;
+
+
     }
 
     @Override
-    public Customer fingByUsername(String username) {
+    public User fingByUsername(String username) {
         return entityManager.createQuery(
                 "from "+getEntityClass().getSimpleName()+ " where username=:username",getEntityClass())
                 .setParameter("username",username).getSingleResult();

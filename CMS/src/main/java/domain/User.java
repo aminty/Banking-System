@@ -1,10 +1,12 @@
 package domain;
 
+import base.domain.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ui.enumeration.Gender;
+import ui.enumeration.Job;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,8 +15,8 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Embeddable
-public class User {
+@Entity
+public class User extends BaseEntity<Long> {
 
     private String firstName;
 
@@ -30,6 +32,11 @@ public class User {
     private String username;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Job jobTitle;
+
+    private boolean isChief;
 
 
 }

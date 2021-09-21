@@ -35,7 +35,7 @@ public  abstract class BaseEntityServiceImpl<E extends BaseEntity<ID>,
 
     @Override
     public List<E> findAll() {
-        return findAll();
+        return repository.findAll();
     }
 
     @Override

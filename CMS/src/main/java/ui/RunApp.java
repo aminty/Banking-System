@@ -1,7 +1,7 @@
 package ui;
 
+import ui.enumeration.Job;
 import util.ApplicationContext;
-import util.CurrentData;
 import validation.Validator;
 
 
@@ -18,31 +18,58 @@ public class RunApp {
                 PrintData.printMessage("Select item : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
-                           login();
+                        login();
                         break;
 
                     case 2:
                         signup();
                         break;
 
+
                     case 3:
+                        ApplicationContext.getBankService().buidBank();
+                        break;
+
+                    case 4:
                         break outer;
                     default:
                         PrintData.errorMessage("Item does not exists !");
 
                 }
-
-
             }
         }
-
-
     }
 
     private static void signup() {
-        ApplicationContext.getCustomerService().signup();
+        outer:
+        {
+            while (true) {
+                System.out.println("-*-*-*-*-*-* sign up -*-*-*-*-*-*");
+                int selectedItem;
+                PrintData.printMenu(Menu.LOGINAS);
+                PrintData.printMessage("Signup as : ");
+                switch (Validator.checkInteger("\\d+")) {
+                    case 1:
+                        ApplicationContext.getUserService().signup(Job.EMPLOYEE);
+
+                        break;
+
+                    case 2:
+                        ApplicationContext.getUserService().signup(Job.CUSTOMER);
+
+
+                        break;
+
+                    case 3:
+                        break outer;
+                    default:
+                        PrintData.errorMessage("Item does not exists !");
+                }
+            }
+        }
 
     }
+
 
     private static void login() {
         outer:
@@ -54,22 +81,18 @@ public class RunApp {
                 PrintData.printMessage("Login as : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
-                        if( ApplicationContext.getEmployeeService().login())
-                            loginAsEmployee();
+                        loginAsEmployee();
                         break;
 
                     case 2:
-                        if( ApplicationContext.getCustomerService().login())
-                            loginAsCustomer();
+                        loginAsCustomer();
                         break;
 
                     case 3:
                         break outer;
                     default:
                         PrintData.errorMessage("Item does not exists !");
-
                 }
-
             }
         }
     }
@@ -79,7 +102,7 @@ public class RunApp {
         {
             while (true) {
                 int selectedItem;
-                PrintData.printMenu(Menu.WHENCUSTOMERLOGIN);
+                PrintData.printDashboard(Menu.WHENCUSTOMERLOGIN);
                 PrintData.printMessage("Select item : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
@@ -140,6 +163,4 @@ public class RunApp {
             }
         }
     }
-
-
 }

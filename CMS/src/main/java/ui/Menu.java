@@ -4,7 +4,7 @@ public class Menu {
 
 
     public static String[] STARTMENU =
-            {"[1] - Login", "[2] - Sign up", "[3] - Exit"};
+            {"[1] - Login", "[2] - Sign up", "[3] - Build a bank","[4] - Exit"};
 
     public static String[] LOGINAS =
             {"[1] - Employee", "[2] - Customer", "[3] - Exit"};

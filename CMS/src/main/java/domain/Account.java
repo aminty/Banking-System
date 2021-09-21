@@ -19,7 +19,7 @@ import java.util.List;
 public class Account extends BaseEntity<Long> {
 
     @ManyToOne
-    private Customer customer;
+    private User ownerAccount;
 
 
     @ManyToOne(cascade = CascadeType.ALL)
