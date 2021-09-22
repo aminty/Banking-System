@@ -1,5 +1,6 @@
 package ui;
 
+import com.github.javafaker.App;
 import ui.enumeration.Job;
 import util.ApplicationContext;
 import util.CurrentData;
@@ -120,16 +121,24 @@ public class RunApp {
                                 (ApplicationContext.getTransactionService()
                                         .showTransaction(CurrentData.getCurrentAccount()
                                                 .getId()));
-
                         break;
 
                     case 4:
                         ApplicationContext.getBankService().changePin();
                         break;
                     case 5:
+                        ApplicationContext.getAccountService().createNewAccount();
+                        PrintData.successMessage("Account created successfully!");
 
                         break;
                     case 6:
+                        PrintData.showAllAccounts
+                                (ApplicationContext.getAccountService().accountByUserId
+                                        (CurrentData.getCurrentUser().getId()));
+                        CurrentData.setCurrentAccount(
+                                ApplicationContext.getAccountService().
+                                        findById((long) GetDataFromUser.getItem())
+                        );
 
                         break;
 

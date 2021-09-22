@@ -42,7 +42,8 @@ public class UserServiceImpl extends BaseEntityServiceImpl<User, Long, UserRepos
             }
             if (user.getPassword().equals(password)) {
                 CurrentData.setCurrentUser(user);
-                CurrentData.setCurrentAccount(ApplicationContext.getAccountService().findByUser(user.getId()));
+
+                CurrentData.setCurrentAccount(ApplicationContext.getAccountService().switchAccount(user.getId()));
             }
             PrintData.printMessage(Menu.LOGIN_SUCCESS__MSG);
             return true;
@@ -83,7 +84,8 @@ public class UserServiceImpl extends BaseEntityServiceImpl<User, Long, UserRepos
         if (bank.getChief() == null) {
             if (Job.EMPLOYEE.equals(jobTitle)) {
                 bank.setChief(user);
-                save(user); }
+                save(user);
+            }
             if (Job.CUSTOMER.equals(jobTitle)) {
                 PrintData.errorMessage("This bank has no chief yet!");
                 return; }

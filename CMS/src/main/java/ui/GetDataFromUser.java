@@ -96,4 +96,12 @@ public class GetDataFromUser {
                 return Integer.parseInt(pin);
         }
     }
+
+    public static int getItem() {
+
+        while (true) {
+            System.out.printf("\t %s enter account id: ", Menu.NEXTLINE);
+            return Validator.checkInteger("\\d+");
+        }
+    }
 }

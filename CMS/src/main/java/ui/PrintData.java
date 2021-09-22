@@ -1,5 +1,6 @@
 package ui;
 
+import domain.Account;
 import domain.Transaction;
 import util.CurrentData;
 
@@ -36,11 +37,22 @@ public class PrintData {
     }
 
     public static void showAllTransactions(List<Transaction> transaction) {
-        transaction.forEach(t->System.out.printf
-                ("\t "+Menu.NEXTLINE+"[%d] T-Type: %s  Amount: %s   Owner: %s    Destination: %s  Date: %s",
+        transaction.forEach(t -> System.out.printf
+                ("\t " + Menu.NEXTLINE + "[%d] - T-Type: %s  Amount: %s  Owner: %s  Destination: %s  Date: %s",
                         t.getId(),
-                        t.getTransactionType(),t.getWithdrawAmount(),t.getSource().getOwnerAccount().getUsername(),
-                        t.getDestination().getOwnerAccount().getUsername(),t.getDate()));
+                        t.getTransactionType(), t.getWithdrawAmount(), t.getSource().getOwnerAccount().getUsername(),
+                        t.getDestination().getOwnerAccount().getUsername(), t.getDate()));
         System.out.println("|-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|");
+    }
+
+    public static void showAllAccounts(List<Account> accounts) {
+        accounts.forEach(a -> System.out.printf
+                ("\t " + Menu.NEXTLINE + "[%d] - Owner: %s  Balance: %s   Usename: %s    Branch: %s  \n",
+                        a.getId(),
+                        a.getOwnerAccount().getFirstName()+a.getOwnerAccount().getLastName(),
+                        a.getBalance(), a.getOwnerAccount().getUsername(),
+                        a.getBranch().getBName()));
+        System.out.println("|-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|");
+
     }
 }
