@@ -24,4 +24,11 @@ public class AccountRepositoryImpl extends BaseEntityRepositoryImpl<Account,Long
         return entityManager.createQuery(
                 "from "+getEntityClass().getSimpleName()+ " where ownerAccount_id=:userId",getEntityClass())
                 .setParameter("userId",userId).getSingleResult();    }
+
+    @Override
+    public Account findByCardId(Long cardId) {
+        return entityManager.createQuery(
+                "from "+getEntityClass().getSimpleName()+" where creaditCard_id=:cardId",
+                getEntityClass()).setParameter("cardId",cardId).getSingleResult();
+    }
 }

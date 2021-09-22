@@ -21,16 +21,13 @@ public class Account extends BaseEntity<Long> {
     @ManyToOne
     private User ownerAccount;
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     private Bank branch;
 
     @OneToOne(cascade = CascadeType.ALL)
     private CreaditCard creaditCard;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="trans_per_acc")
-    private List<Transaction> transactions = new ArrayList<>();
+
 
     private double balance;
 

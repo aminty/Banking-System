@@ -8,6 +8,7 @@ import lombok.Setter;
 import ui.enumeration.TransactionType;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 @Entity
@@ -21,7 +22,9 @@ public class Transaction extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
-    private Date transactionDate;
+    private ZonedDateTime date= ZonedDateTime.now();
+
+    private double withdrawAmount;
 
     @OneToOne
     private Account source;

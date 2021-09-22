@@ -6,4 +6,6 @@ import domain.User;
 
 public interface AccountRepository extends BaseEntityRepository <Account,Long>{
     Account findByUser(long userId);
+
+    Account findByCardId(Long cardId);
 }

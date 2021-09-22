@@ -104,26 +104,36 @@ public class RunApp {
         outer:
         {
             while (true) {
-                int selectedItem;
                 PrintData.printDashboard(Menu.WHENCUSTOMERLOGIN);
                 PrintData.printMessage("Select item : ");
                 switch (Validator.checkInteger("\\d+")) {
                     case 1:
-
+                        ApplicationContext.getBankService().withdraw();
                         break;
 
                     case 2:
-
+                        ApplicationContext.getBankService().getBalance();
                         break;
                     case 3:
+
+                        PrintData.showAllTransactions
+                                (ApplicationContext.getTransactionService()
+                                        .showTransaction(CurrentData.getCurrentAccount()
+                                                .getId()));
 
                         break;
 
                     case 4:
+                        ApplicationContext.getBankService().changePin();
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
 
                         break;
 
-                    case 5:
+                    case 7:
                         CurrentData.logout();
                         break outer;
                     default:

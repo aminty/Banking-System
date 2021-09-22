@@ -10,7 +10,7 @@ public class Menu {
             {"[1] - Employee", "[2] - Customer", "[3] - Exit"};
 
     public static String[] WHENCUSTOMERLOGIN =
-            {"[1] - Send money", "[2] - Inquiry balance", "[3] - Show transactions", "[4] - Change pin", "[5] - Exit"};
+            {"[1] - Send money", "[2] - Inquiry balance", "[3] - Show transactions", "[4] - Change pin", "[5] - Create account","[6] - Switch account","[7] - Exit"};
 
     public static String[] WHENEMPLOYEELOGIN =
             {"[1] - Delete user", "[2] - Manage account ", "[3] - Show transactions", "[4] - Change pin", "[5] - Exit"};

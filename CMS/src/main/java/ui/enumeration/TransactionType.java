@@ -6,7 +6,7 @@ public enum TransactionType {
 
     INQUIRY_BALANCE,
 
-    CHANGE_PASS,
+    CHANGE_PIN,
 
     SHOW_TRANSACTION
 

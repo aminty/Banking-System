@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +31,7 @@ public class CreaditCard extends BaseEntity<Long> {
     private boolean isBlockCard;
 
     private boolean isActiveCard;
+
 
 
 }

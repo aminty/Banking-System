@@ -13,9 +13,18 @@ public class Validator {
             Matcher m= Pattern.compile(pattern).matcher(entry);
             if (m.matches())
                 return Integer.parseInt(entry);
-
         }
-
     }
 
+    public static boolean checkCardNumer(String number){
+            Matcher m= Pattern.compile("\\d{16}").matcher(number);
+            if (m.matches()){
+                return true;
+
+            }else return false;
+        }
+
+    public static boolean isValidPin(String pin) {
+        return Pattern.compile("\\d+").matcher(pin).matches();
+    }
 }
