@@ -38,7 +38,7 @@ public class PrintData {
 
     public static void showAllTransactions(List<Transaction> transaction) {
         transaction.forEach(t -> System.out.printf
-                ("\t " + Menu.NEXTLINE + "[%d] - T-Type: %s  Amount: %s  Owner: %s  Destination: %s  Date: %s",
+                ("\t " + Menu.NEXTLINE + "[%d] - T-Type: %s  Amount: %s  Owner: %s  Destination: %s  Date: %s  \n",
                         t.getId(),
                         t.getTransactionType(), t.getWithdrawAmount(), t.getSource().getOwnerAccount().getUsername(),
                         t.getDestination().getOwnerAccount().getUsername(), t.getDate()));

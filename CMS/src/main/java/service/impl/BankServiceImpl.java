@@ -69,9 +69,9 @@ public class BankServiceImpl extends BaseEntityServiceImpl<Bank, Long, BankRepos
                     destAccount.setBalance(destAccount.getBalance() + amount);
                     CurrentData.getCurrentAccount().
                             setBalance(CurrentData.getCurrentAccount().getBalance() - (amount + 600));
-                    processTransaction(TransactionType.CARD_TO_CARD, destAccount,amount);
+                    processTransaction(TransactionType.CARD_TO_CARD, destAccount, amount);
                     PrintData.successMessage("Transactio has done successfully.\n Destination owner account: "
-                            +destAccount.getOwnerAccount().getFirstName()+" "+destAccount.getOwnerAccount().getLastName());
+                            + destAccount.getOwnerAccount().getFirstName() + " " + destAccount.getOwnerAccount().getLastName());
 
                     return true;
 
@@ -89,7 +89,7 @@ public class BankServiceImpl extends BaseEntityServiceImpl<Bank, Long, BankRepos
 
 
     @Override
-    public void processTransaction(TransactionType cardToCard, Account destAccount,double amount) {
+    public void processTransaction(TransactionType cardToCard, Account destAccount, double amount) {
         Transaction transaction = new Transaction();
         transaction.setSource(CurrentData.getCurrentAccount());
         transaction.setDestination(destAccount);
@@ -101,29 +101,37 @@ public class BankServiceImpl extends BaseEntityServiceImpl<Bank, Long, BankRepos
         ApplicationContext.getAccountService().save(CurrentData.getCurrentAccount());
 
 
-
     }
 
     @Override
     public void getBalance() {
-    processTransaction(TransactionType.INQUIRY_BALANCE,CurrentData.getCurrentAccount(),0);
-        PrintData.successMessage("Your balance is: "+CurrentData.getCurrentAccount().getBalance());
+        if (!CurrentData.getCurrentAccount().getCreaditCard().isBlockCard()) {
+            processTransaction(TransactionType.INQUIRY_BALANCE, CurrentData.getCurrentAccount(), 0);
+            PrintData.successMessage("Your balance is: " + CurrentData.getCurrentAccount().getBalance());
+
+        } else
+            PrintData.errorMessage("You can not check your balance !!!!");
     }
 
     @Override
     public boolean changePin() {
-        Account account=CurrentData.getCurrentAccount();
-        int newPin=GetDataFromUser.changePin();
-        if (newPin!=1234){
-            account.getCreaditCard().setPinCode(String.valueOf(newPin));
-            account.getCreaditCard().setActiveCard(true);
-            ApplicationContext.getAccountService().save(account);
-            processTransaction(TransactionType.CHANGE_PIN,account,0);
-            PrintData.successMessage("Pin changed successfully.");
-            return true;
+        if (!CurrentData.getCurrentAccount().getCreaditCard().isBlockCard()) {
+            Account account = CurrentData.getCurrentAccount();
+            int newPin = GetDataFromUser.changePin();
+            if (newPin != 1234) {
+                account.getCreaditCard().setPinCode(String.valueOf(newPin));
+                account.getCreaditCard().setActiveCard(true);
+                ApplicationContext.getAccountService().save(account);
+                processTransaction(TransactionType.CHANGE_PIN, account, 0);
+                PrintData.successMessage("Pin changed successfully.");
+                return true;
 
-        }else{
-            PrintData.errorMessage("Choose different pin .Try again.");
+            } else {
+                PrintData.errorMessage("Choose different pin .Try again.");
+                return false;
+            }
+        } else {
+            PrintData.errorMessage("You can not check your balance !!!!");
             return false;
         }
     }

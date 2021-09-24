@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,11 +15,11 @@ import javax.persistence.Table;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="creadit")
+@Table(name = "creadit")
 
 public class CreaditCard extends BaseEntity<Long> {
 
-
+    @Column(unique = true)
     private String cardNumber;
 
     private String cvv2;
@@ -31,7 +31,6 @@ public class CreaditCard extends BaseEntity<Long> {
     private boolean isBlockCard;
 
     private boolean isActiveCard;
-
 
 
 }

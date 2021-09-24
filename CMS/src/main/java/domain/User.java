@@ -27,15 +27,16 @@ public class User extends BaseEntity<Long> {
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
+    @Column(unique = true)
     private String nationalCode;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Job jobTitle;
-
 
 
 }
